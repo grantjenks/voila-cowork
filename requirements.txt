@@ -1,2 +1,4 @@
+django-cors-headers
+django==2.2.*
 ipython
 tornado
