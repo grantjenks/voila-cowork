@@ -13,11 +13,11 @@
      - Create comments / delete comments?
 ```
 import coms
-coms.initialize('NSAT-Analysis')
+coms.initialize('Survey-Analysis')
 # Initialize SQLite database
 # And start server in background (Tornado)
 ...
-coms.comments('NSAT-Response-vs-MP')
+coms.comments('Survey-Response-vs-Repository')
 # Emit Javascript that polls server for comments.
 ```
 ** Google Docs?
