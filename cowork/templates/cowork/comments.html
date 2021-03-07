@@ -1,1 +1,26 @@
-<h3>Comments</h3>
+<!doctype html>
+<html>
+  <head>
+    <script src="https://unpkg.com/htmx.org@1.3.0"></script>
+  </head>
+  <body>
+    <div id="comments-topic">
+      <h3>Comments</h3>
+      <form
+          hx-post="http://{{ request.META.HTTP_HOST }}{% url 'comments' %}"
+          hx-select="#comments-topic"
+          hx-target="#comments-topic"
+          method="POST"
+          action="http://{{ request.META.HTTP_HOST }}{% url 'comments' %}"
+      >
+        {{ comment_form }}
+        {% csrf_token %}
+        <input type="submit" value="Submit" >
+      </form>
+      {% for comment in comments %}
+        <p>{{ comment.modify_time }}</p>
+        <p>{{ comment.message }}</p>
+      {% endfor %}
+    </div>
+  </body>
+</html>
