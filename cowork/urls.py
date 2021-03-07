@@ -20,6 +20,6 @@ from . import views
 
 
 urlpatterns = [
-    path('comments/', views.comments),
+    path('comments/', views.comments, name='comments'),
     path('backend/', admin.site.urls),
 ]
