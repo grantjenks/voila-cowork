@@ -1,4 +1,8 @@
 * README
+** TODO
+   - [ ] Add concept of "document" and "topic" to Comment model
+   - [ ] Strip the <head> from the comments embedded in voila page
+* Notes
   - Interesting: https://docs.microsoft.com/en-us/graph/auth-register-app-v2
 ** Voila
    - Helpful to see comments rendered in both Voila and Jupyter.
