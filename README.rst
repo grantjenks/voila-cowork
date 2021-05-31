@@ -2,6 +2,10 @@
 ** TODO
    - [ ] Add concept of "document" and "topic" to Comment model
    - [ ] Strip the <head> from the comments embedded in voila page
+   - [ ] Beware, tornado uses the asyncio event loop!
+     - So the ORM in Django views will block :( Consider using shims:
+       - https://docs.djangoproject.com/en/3.2/topics/async/
+       - https://github.com/plter/tornado_asgi_handler/blob/master/tornado_asgi_handler/__init__.py
 * Notes
   - Interesting: https://docs.microsoft.com/en-us/graph/auth-register-app-v2
 ** Voila
