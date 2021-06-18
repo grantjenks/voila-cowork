@@ -21,7 +21,7 @@ Example
 .. code-block:: python
 
    import cowork
-   cowork.initialize(
+   cowork.setup(
        'Latency-Analysis',
        database='sqlite3:///tmp/Latency-Analysis.sqlite3',
    )
