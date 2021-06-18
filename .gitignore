@@ -22,3 +22,6 @@
 
 # SQLite databases
 db.sqlite3
+
+# IPython notebook checkpoints
+.ipynb_checkpoints/
