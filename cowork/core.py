@@ -17,13 +17,13 @@ class Document:
         http_server.listen(0)
         port = next(iter(http_server._sockets.values())).getsockname()[1]
         self.port = port
-        script_tags = '''
+        script_tags = """
             <script src="https://unpkg.com/htmx.org@1.3.0"></script>
-        '''
+        """
         return HTML(script_tags)
 
     def style(self):
-        css = '''
+        css = """
             <style>
             .jp-Notebook {
               background: lightgray;
@@ -38,7 +38,7 @@ class Document:
               background: white;
             }
             </style>
-        '''
+        """
         return HTML(css)
 
     async def comments(self):
