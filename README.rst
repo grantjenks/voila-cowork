@@ -6,6 +6,7 @@ Cowork
 TODO
 ====
 
+- How to run migrations during setup?
 - How to render comments when converted to HTML?
 - Add concept of "document" and "topic" to Comment model
 - Strip the <head> from the comments embedded in voila page
