@@ -1,9 +1,9 @@
+import pathlib
+import re
 import sys
 import setuptools
 
 from setuptools.command.test import test as TestCommand
-
-import cowork
 
 
 class Tox(TestCommand):
@@ -19,27 +19,36 @@ class Tox(TestCommand):
         sys.exit(errno)
 
 
+cowork_init = (pathlib.Path('cowork') / '__init__.py').read_text()
+match = re.search(r"^__version__ = '(.+)'$", cowork_init, re.MULTILINE)
+version = match.group(1)
+
 with open('README.rst') as reader:
     readme = reader.read()
 
 setuptools.setup(
     name='cowork',
-    version=cowork.__version__,
+    version=version,
     description='Cowork',
     long_description=readme,
     long_description_content_type='text/x-rst',
     author='Grant Jenks',
     author_email='contact@grantjenks.com',
-    url='http://www.grantjenks.com/docs/cowork/',
+    url='http://www.grantjenks.com/docs/jupyter-cowork/',
     license='Apache 2.0',
     packages=['cowork'],
     include_package_data=True,
     tests_require=['tox'],
     cmdclass={'test': Tox},
-    install_requires=[],
+    install_requires=[
+        'django-cors-headers',
+        'django==2.2.*',
+        'ipython',
+        'tornado',
+    ],
     project_urls={
-        'Documentation': 'http://www.grantjenks.com/docs/cowork/',
-        'Funding': 'http://gum.co/cowork',
+        'Documentation': 'http://www.grantjenks.com/docs/jupyter-cowork/',
+        'Funding': 'https://gum.co/jupyter-cowork',
         'Source': 'https://github.com/grantjenks/jupyter-cowork',
         'Tracker': 'https://github.com/grantjenks/jupyter-cowork/issues',
     },

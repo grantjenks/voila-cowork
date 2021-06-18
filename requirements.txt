@@ -1,4 +1,13 @@
-django-cors-headers
-django==2.2.*
-ipython
-tornado
+-e .
+blue
+coverage
+doc8
+flake8
+isort
+pytest
+pytest-cov
+rstcheck
+sphinx
+tox
+twine
+wheel
