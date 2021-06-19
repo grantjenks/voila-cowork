@@ -9,11 +9,12 @@ from .wsgi import application
 
 class Document:
     def __init__(self):
+        self.document = None
         self.port = None
 
-    def setup(self, db_url=None, style=None):
+    def setup(self, document, db_url=None):
         # TODO db_url
-        # TODO style
+        self.document = document
         container = tornado.wsgi.WSGIContainer(application)
         http_server = tornado.httpserver.HTTPServer(container)
         http_server.listen(0)
