@@ -38,8 +38,8 @@ class Document:
         """
         return HTML(tags)
 
-    async def comments(self, name):
-        # TODO name
+    async def comments(self, topic):
+        # TODO topic
         http_client = tornado.httpclient.AsyncHTTPClient()
         # TODO will localhost work in prod?
         resp = await http_client.fetch(f'http://localhost:{self.port}/comments/')
