@@ -6,13 +6,18 @@ Cowork
 TODO
 ====
 
-- How to run migrations during setup?
-- How to render comments when converted to HTML?
+- Add "author" field to messages
 - Add concept of "document" and "topic" to Comment model
+- Support deleting comments
+- Support editing comments
+- Render comment message as markdown
+- How to run migrations during setup?
+- How to render comments when notebook is converted to HTML?
 - Strip the <head> from the comments embedded in voila page
 - How to handle authentication?
+  - Provide endpoint for passing a username to the backend
 - How to mention people?
-- How to create comments? Delete comments?
+  - Use "@gjenks" like Slack
 
 
 Example
