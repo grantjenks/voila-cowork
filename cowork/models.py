@@ -2,11 +2,15 @@ from django.db import models
 
 
 class Document(models.Model):
+    create_time = models.DateTimeField(auto_now_add=True)
+    modify_time = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=200)
     author = models.CharField(max_length=100)
 
 
 class Topic(models.Model):
+    create_time = models.DateTimeField(auto_now_add=True)
+    modify_time = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=200)
     document = models.ForeignKey(Document, on_delete=models.CASCADE)
 
