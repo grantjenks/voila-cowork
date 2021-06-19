@@ -18,6 +18,7 @@ TODO
   - Provide endpoint for passing a username to the backend
 - How to mention people?
   - Use "@gjenks" like Slack
+- Add /admin type endpoint/function for viewing all documents/topics
 
 
 Example
