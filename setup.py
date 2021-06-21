@@ -41,8 +41,9 @@ setuptools.setup(
     tests_require=['tox'],
     cmdclass={'test': Tox},
     install_requires=[
+        'dj_database_url',
         'django-cors-headers',
-        'django==2.2.*',
+        'django==3.2.*',
         'ipython',
         'tornado',
     ],
