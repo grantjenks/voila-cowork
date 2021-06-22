@@ -4,6 +4,7 @@ coverage
 doc8
 flake8
 isort
+jupyterlab
 pytest
 pytest-cov
 rstcheck

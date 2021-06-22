@@ -7,19 +7,21 @@
     <div id="comments-topic">
       <h3>Comments</h3>
       <form
-          hx-post="http://{{ request.META.HTTP_HOST }}{% url 'comments' %}"
+          hx-post="http://{{ request.META.HTTP_HOST }}{% url 'comments' author.username document.name topic.name %}"
           hx-select="#comments-topic"
           hx-target="#comments-topic"
           method="POST"
-          action="http://{{ request.META.HTTP_HOST }}{% url 'comments' %}"
+          action="http://{{ request.META.HTTP_HOST }}{% url 'comments' author.username document.name topic.name %}"
       >
-        {{ comment_form }}
+        {{ form }}
         {% csrf_token %}
         <input type="submit" value="Submit" >
       </form>
       {% for comment in comments %}
-        <p>{{ comment.modify_time }}</p>
-        <p>{{ comment.message }}</p>
+        <p>
+          {{ comment.author }} at {{ comment.modify_time }}<br>
+          {{ comment.message }}
+        </p>
       {% endfor %}
     </div>
   </body>
