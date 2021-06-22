@@ -2,7 +2,7 @@
 
 """
 
-from .core import setup, comments
+from .core import comments, register, setup
 
-__all__ = ['setup', 'comments']
+__all__ = ['comments', 'register', 'setup']
 __version__ = '0.0.1'
