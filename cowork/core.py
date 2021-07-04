@@ -23,19 +23,19 @@ class Document:
 
         For SQLite, there should be four slashes for an absolute path:
 
-            'sqlite:////absolute/path/to/db.sqlite'
+            'sqlite:////absolute/path/to/db.sqlite3'
 
         When `db_url` is None (the default), the SQLite driver will be used
         with the current working directory path like:
 
             cwd = os.getcwd()
-            name = f'cowork-{document}.sqlite'
+            name = f'cowork-{document}.sqlite3'
             f'sqlite:///{os.path.join(cwd, name)}'
 
         """
         if db_url is None:
             cwd = os.getcwd()
-            name = f'cowork-{document}.sqlite'
+            name = f'cowork-{document}.sqlite3'
             db_url = f'sqlite:///{os.path.join(cwd, name)}'
         os.environ.setdefault('DATABASE_URL', db_url)
         from django.core import management
