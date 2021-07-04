@@ -1,6 +1,3 @@
-from asgiref.sync import sync_to_async
-from concurrent.futures import ThreadPoolExecutor
-
 from django.contrib.auth import login, logout as auth_logout
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
@@ -14,9 +11,9 @@ from .models import Document, Topic, Comment
 def register(request):
     if request.method == 'POST':
         user_form = UserCreationForm(request.POST)
-        with ThreadPoolExecutor(1) as executor:
-            user = executor.submit(user_form.save).result()
-        return HttpResponse(user.username)
+        if user_form.is_valid():
+            user = user_form.save()
+            return HttpResponse(user.username)
     return HttpResponse(request.user.username)
 
 
@@ -26,15 +23,6 @@ def logout(request):
 
 
 def comments(request, author, document, topic):
-    with ThreadPoolExecutor(1) as executor:
-        future = executor.submit(_comments, request, author, document, topic)
-        result = future.result()
-    if isinstance(result, HttpResponse):
-        return result
-    return render(request, 'cowork/comments.html', result)
-
-
-def _comments(request, author, document, topic):
     kwargs = {}
 
     author, _ = User.objects.get_or_create(username=author)
@@ -74,9 +62,8 @@ def _comments(request, author, document, topic):
                 'topic': topic,
                 'author': request.user,
             })
-    kwargs['form'] = form
 
+    kwargs['form'] = form
     comments = list(Comment.objects.order_by('-create_time')[:5])
     kwargs['comments'] = comments
-
-    return kwargs
+    return render(request, 'cowork/comments.html', kwargs)
