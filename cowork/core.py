@@ -62,6 +62,7 @@ class Document:
                 window.define = undefined;
                 window.require = undefined;
             </script>
+            <meta name="htmx-config" content="{withCredentials: true}">
             <script src="https://unpkg.com/htmx.org@1.4.1"></script>
             <script>
                 window.define = window.__define;
