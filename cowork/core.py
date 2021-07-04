@@ -55,23 +55,21 @@ class Document:
         http_server.listen(0)
         port = next(iter(http_server._sockets.values())).getsockname()[1]
         self.port = port
-        tags = '''
-            <style>
-              .jp-Notebook {
-                background: lightgray;
-              }
-
-              #rendered_cells {
-                display: inherit !important;
-                max-width: 960px;
-                margin: 0 auto;
-                padding: 96px;
-                box-shadow: 0 0 4px 4px gray;
-                background: white;
-              }
-            </style>
-            <script src="https://unpkg.com/htmx.org@1.3.0"></script>
-        '''
+        tags = """
+            <script>
+                window.__define = window.define;
+                window.__require = window.require;
+                window.define = undefined;
+                window.require = undefined;
+            </script>
+            <script src="https://unpkg.com/htmx.org@1.4.1"></script>
+            <script>
+                window.define = window.__define;
+                window.require = window.__require;
+                window.__define = undefined;
+                window.__require = undefined;
+            </script>
+        """
         return HTML(tags)
 
     async def register(self, username):
