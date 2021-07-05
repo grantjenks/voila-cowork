@@ -57,18 +57,13 @@ class Document:
         self.port = port
         tags = """
             <script>
-                window.__define = window.define;
-                window.__require = window.require;
-                window.define = undefined;
-                window.require = undefined;
-            </script>
-            <meta name="htmx-config" content="{withCredentials: true}">
-            <script src="https://unpkg.com/htmx.org@1.4.1"></script>
-            <script>
-                window.define = window.__define;
-                window.require = window.__require;
-                window.__define = undefined;
-                window.__require = undefined;
+                require(
+                    ["https://unpkg.com/htmx.org@1.4.1"],
+                    function (htmx) {
+                        window.htmx = htmx;
+                        htmx.config.withCredentials = true;
+                    }
+                );
             </script>
         """
         return HTML(tags)
@@ -93,9 +88,10 @@ class Document:
         http_client = tornado.httpclient.AsyncHTTPClient()
         # TODO will localhost work in prod?
         url = f'http://localhost:{self.port}/{self.author}/{self.document}/{topic}/comments/'
-        resp = await http_client.fetch(url)
-        text = resp.body.decode()
-        return HTML(text)
+        return HTML(f"""
+            <div hx-get="{url}" hx-trigger="load"></div>
+            <script>htmx.process(document.body)</script>
+        """)
 
 
 document = Document()
