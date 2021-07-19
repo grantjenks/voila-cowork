@@ -33,6 +33,9 @@ class Document:
             f'sqlite:///{os.path.join(cwd, name)}'
 
         """
+        # TODO: `db_url` param is too strong of a requirement. It works for
+        # local development with a database but the more generic solution is to
+        # use a server url and not run the server in the local ioloop.
         if db_url is None:
             cwd = os.getcwd()
             name = f'cowork-{document}.sqlite3'
@@ -86,7 +89,6 @@ class Document:
 
     async def comments(self, topic):
         http_client = tornado.httpclient.AsyncHTTPClient()
-        # TODO will localhost work in prod?
         url = f'http://localhost:{self.port}/{self.author}/{self.document}/{topic}/comments/'
         return HTML(f"""
             <div hx-get="{url}" hx-trigger="load"></div>
