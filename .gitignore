@@ -21,7 +21,7 @@
 .DS_Store
 
 # SQLite databases
-db.sqlite3
+*.sqlite3
 
 # IPython notebook checkpoints
 .ipynb_checkpoints/
