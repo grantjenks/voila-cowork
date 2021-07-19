@@ -146,3 +146,5 @@ CORS_ALLOW_HEADERS = list(default_headers) + [
     'HX-Request',
     'HX-Target',
 ]
+
+SESSION_COOKIE_SAMESITE = 'None'
