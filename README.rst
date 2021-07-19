@@ -6,23 +6,20 @@ Cowork
 TODO
 ====
 
-- Rename to jupyter-comments (module name jupyter_comments)
-- Need to run a separate server, jupyter-comments.com
+- Need to run a separate server, (e.g. jupyter dash comments dot com)
+  - Need to test: using external server, can notebooks rendered on GitHub show comments?
   - Server running in the notebook needs access to database (for local development)
-  - Users can run their own server or use public one (free for open source)
-- Add "author" field to messages
-- Add concept of "document" and "topic" to Comment model
+  - Users can run their own server or use public one (free for open source?)
+  - Allow users to run their own server.
+- Rename to jupyter-comments (module name jupyter_comments)
 - Support deleting comments
 - Support editing comments
 - Render comment message as markdown
-- How to run migrations during setup?
-- How to render comments when notebook is converted to HTML?
+- Option to render comments when notebook is converted to HTML?
 - Strip the <head> from the comments embedded in voila page
-- How to handle authentication?
-  - Provide endpoint for passing a username to the backend
 - How to mention people?
   - Use "@gjenks" like Slack
-- Add /admin type endpoint/function for viewing all documents/topics
+- Add /manage type endpoint/function for viewing all documents/topics
 
 
 Example
