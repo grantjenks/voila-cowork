@@ -10,10 +10,12 @@ from .models import Document, Topic, Comment
 
 def register(request):
     if request.method == 'POST':
-        user_form = UserCreationForm(request.POST)
-        if user_form.is_valid():
-            user = user_form.save()
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
             return HttpResponse(user.username)
+        else:
+            return HttpResponse(f'ERROR: {form.errors}')
     return HttpResponse(request.user.username)
 
 
