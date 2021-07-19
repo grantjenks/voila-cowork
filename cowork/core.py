@@ -58,17 +58,24 @@ class Document:
         http_server.listen(0)
         port = next(iter(http_server._sockets.values())).getsockname()[1]
         self.port = port
-        tags = """
-            <script>
-                require(
-                    ["https://unpkg.com/htmx.org@1.4.1"],
-                    function (htmx) {
-                        window.htmx = htmx;
-                        htmx.config.withCredentials = true;
-                    }
-                );
-            </script>
-        """
+        if os.environ.get('SERVER_SOFTWARE', '').startswith('voila/'):
+            tags = """
+                <meta name="htmx-config" content='{"withCredentials": true}'>
+                <script src="https://unpkg.com/htmx.org@1.4.1"></script>
+                <script>htmx.logAll();</script>
+            """
+        else:
+            tags = """
+                <script>
+                    require(
+                        ["https://unpkg.com/htmx.org@1.4.1"],
+                        function (htmx) {
+                            window.htmx = htmx;
+                            htmx.config.withCredentials = true;
+                        }
+                    );
+                </script>
+            """
         return HTML(tags)
 
     async def register(self, username):
