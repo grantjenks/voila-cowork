@@ -99,7 +99,7 @@ class Document:
         url = f'http://localhost:{self.port}/{self.author}/{self.document}/{topic}/comments/'
         return HTML(f"""
             <div hx-get="{url}" hx-trigger="load"></div>
-            <script>htmx.process(document.body)</script>
+            <script>if (typeof(htmx) !== "undefined") {{ htmx.process(document.body); }}</script>
         """)
 
 
