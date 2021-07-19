@@ -6,6 +6,10 @@ Cowork
 TODO
 ====
 
+- Rename to jupyter-comments (module name jupyter_comments)
+- Need to run a separate server, jupyter-comments.com
+  - Server running in the notebook needs access to database (for local development)
+  - Users can run their own server or use public one (free for open source)
 - Add "author" field to messages
 - Add concept of "document" and "topic" to Comment model
 - Support deleting comments
